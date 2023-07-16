@@ -16,6 +16,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 @api_view(['GET'])
 def getProducts(request):
     query = request.query_params.get('keyword')
+    print(query)
     if query is None:
         query = ' '
     products = Product.objects.filter(Q(name__icontains=query) | Q(category__icontains=query)).order_by('-createdAt')
