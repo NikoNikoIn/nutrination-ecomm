@@ -116,9 +116,17 @@ def getMyOrders(request):
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getOrders(request):
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by('-createdAt')
     serializer = OrderSerializer(orders, many = True)
     return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteOrder(request, pk):
+    order = Order.objects.get(_id=pk)
+    order.delete()
+    return Response('Order Deleted')
 
 
 @api_view(['GET'])
@@ -144,7 +152,7 @@ def getPromoCodeById(request, pk):
 def deletePromoCode(request, pk):
     promoCode = PromoCode.objects.get(id=pk)
     promoCode.delete()
-    return Response('Product Deleted')
+    return Response('Promo Code Deleted')
 
 
 @api_view(['POST'])

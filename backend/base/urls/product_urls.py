@@ -4,16 +4,20 @@ from base.views import product_views as views
 
 urlpatterns = [
 
-    path('', views.getProducts, name="products"),
+    path('', views.getProducts, name='products'),
 
-    path('create/', views.createProduct, name="product-create"),
-    path('upload/', views.uploadImage, name="image-upload"),
+    path('create/', views.createProduct, name='product-create'),
+    path('upload/', views.uploadImage, name='image-upload'),
 
     path('top/', views.getTopProducts, name='top-products'),
 
-    path('<str:pk>/reviews/', views.createProductReview, name="create-review"),
-    path('<str:pk>/', views.getProduct, name="product"),
+    path('categories/', views.getCategoriesFromProducts, name='categories-products'),
 
-    path('update/<str:pk>/', views.updateProduct, name="product-update"),
-    path('delete/<str:pk>/', views.deleteProduct, name="product-delete"),
+    path('<str:pk>/reviews/', views.createProductReview, name='create-review'),
+    path('<str:pk>/', views.getProduct, name='product'),
+
+    path('update/<str:pk>/', views.updateProduct, name='product-update'),
+    path('delete/<str:pk>/', views.deleteProduct, name='product-delete'),
+    
+    path('review/delete/<str:pk>/', views.deleteReview, name='review-delete'),
 ]

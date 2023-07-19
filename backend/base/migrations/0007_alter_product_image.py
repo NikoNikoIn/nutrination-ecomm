@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0006_remove_promocode__id_promocode_id'),
+        ('base', '0004_promocode'),
     ]
 
     operations = [

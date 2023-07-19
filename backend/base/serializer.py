@@ -96,7 +96,7 @@ class OrderSerializer(serializers.ModelSerializer):
     
 
 class PromoCodeSerializer(serializers.ModelSerializer):
-    promoCode = serializers.CharField(required=False)  # Make the field optional
+    promoCode = serializers.CharField(required=False)
 
     class Meta:
         model = PromoCode

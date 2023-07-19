@@ -9,7 +9,7 @@ from base.serializer import ProductSerializer
 
 from rest_framework import status
 
-from django.db.models import Q
+from django.db.models import Q, Case, When, Value, IntegerField
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -19,8 +19,16 @@ def getProducts(request):
     print(query)
     if query is None:
         query = ' '
-    products = Product.objects.filter(Q(name__icontains=query) | Q(category__icontains=query)).order_by('-createdAt')
-
+    products = Product.objects.filter(
+        Q(name__icontains=query) | Q(category__icontains=query) | Q(brand__icontains=query)
+    ).order_by(
+        Case(
+            When(countInStock=0, then=Value(1)),
+            default=Value(0),
+            output_field=IntegerField()
+        ),
+        '-createdAt'
+    )   
     page = request.query_params.get('page')    
     paginator = Paginator(products, 8)
     
@@ -36,8 +44,14 @@ def getProducts(request):
 
 
 @api_view(['GET'])
+def getCategoriesFromProducts(request):
+    categories = set(product.category for product in Product.objects.all())
+    return Response({'categories': list(categories)})
+
+
+@api_view(['GET'])
 def getTopProducts(request):
-    products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:5]
+    products = Product.objects.filter(rating__gte=4, countInStock__gt=0).order_by('-rating')[0:7]
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
@@ -58,6 +72,7 @@ def updateProduct(request, pk):
     
     product.name = data['name']
     product.price = data['price']
+    product.discountProduct = data['discountProduct']
     product.brand = data['brand']
     product.countInStock = data['countInStock']
     product.category = data['category']
@@ -85,6 +100,7 @@ def createProduct(request):
         user = user,
         name = 'PlaceHolder Name',
         price = 0,
+        discountProduct = 0,
         brand = 'PlaceHolder Brand',
         countInStock = 0,
         category = 'PlaceHolder Category',
@@ -146,3 +162,11 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review added')
+    
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteReview(request, pk):
+    review = Review.objects.get(_id=pk)
+    review.delete()
+    return Response('Review Deleted')
