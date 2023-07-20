@@ -47,7 +47,7 @@ function Header() {
 
     return (
         <header>
-            {loading ? <Loader/> : (
+            {!loading && (
                 
                 <Navbar
                     expand='lg'
@@ -75,15 +75,22 @@ function Header() {
                                 </LinkContainer>
 
  
-                                {loadingCategories ? <Loader/> : (
+                                {!loadingCategories && (
                                     <>
                                         {categories && categories.length > 0 ? (
                                             <NavDropdown title={<span><i class="fa-solid fa-boxes-stacked"></i> Categories</span>} id='categories' style={{ fontSize: '1.1rem' }}>
-                                                {categories.map((category) => (
-                                                    <NavDropdown.Item onClick={() => handleClick(category)}>
-                                                        {category}
+                                                {categories
+                                                    .filter((category) => category !== 'Other') // Exclude 'Other' category from the initial items
+                                                    .map((category) => (
+                                                        <NavDropdown.Item key={category} onClick={() => handleClick(category)}>
+                                                            {category}
+                                                        </NavDropdown.Item>
+                                                    ))}
+                                                {categories.includes('Other') && (
+                                                    <NavDropdown.Item onClick={() => handleClick('Other')}>
+                                                        Other
                                                     </NavDropdown.Item>
-                                                ))}
+                                                )}
                                             </NavDropdown>
                                         ) : (null)}
                                     </>

@@ -61,7 +61,7 @@ function CartScreen() {
                                 <ListGroup.Item key={item.product}>
                                     <Row>
                                         <Col xs={6} md={2} className='mb-3 mb-md-0'>
-                                            <Image src={item.image} alt={item.name} fluid rounded />
+                                            <Image src={decodeURIComponent(item.image).replace('/images/', '')} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col xs={6} md={3} className='d-flex align-items-center justify-content-center'>
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>

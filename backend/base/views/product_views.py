@@ -12,11 +12,12 @@ from rest_framework import status
 from django.db.models import Q, Case, When, Value, IntegerField
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+import pyrebase
+
 
 @api_view(['GET'])
 def getProducts(request):
     query = request.query_params.get('keyword')
-    print(query)
     if query is None:
         query = ' '
     products = Product.objects.filter(
@@ -61,6 +62,7 @@ def getTopProducts(request):
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
+
     return Response(serializer.data)
 
 
@@ -96,6 +98,7 @@ def deleteProduct(request, pk):
 @permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
+    defaultImage = 'https://firebasestorage.googleapis.com/v0/b/nutrinationcloud.appspot.com/o/images%2Fplaceholder.png?alt=media&token=d31420b6-5295-42e9-8f99-8c39a5860a72'
     product = Product.objects.create(
         user = user,
         name = 'PlaceHolder Name',
@@ -104,7 +107,8 @@ def createProduct(request):
         brand = 'PlaceHolder Brand',
         countInStock = 0,
         category = 'PlaceHolder Category',
-        description = ''
+        description = '',
+        image = defaultImage,
     )
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
@@ -112,12 +116,30 @@ def createProduct(request):
 
 @api_view(['POST'])
 def uploadImage(request):
+
+    config = {
+        "apiKey": "AIzaSyA2t0e00QguUgt5iLV6AqA9CeHux6jO9Ts",
+        "authDomain": "nutrinationcloud.firebaseapp.com",
+        "projectId": "nutrinationcloud",
+        "storageBucket": "nutrinationcloud.appspot.com",
+        "messagingSenderId": "205043949710",
+        "appId": "1:205043949710:web:394792931862b4a89829df",
+        "measurementId": "G-Q513Z4MQVK",
+        "databaseURL" : "https://nutrinationcloud-default-rtdb.europe-west1.firebasedatabase.app/",
+    }
+
+    firebase = pyrebase.initialize_app(config)
+    storage = firebase.storage()
+
     data = request.data
 
     product_id = int(data['product_id'])
     product = Product.objects.get(_id=product_id)
+    image_file = request.FILES.get('image')
+    storage.child('images/' + image_file.name).put(image_file)
 
-    product.image = request.FILES.get('image')
+    image_url = storage.child('images/' + image_file.name).get_url(None)
+    product.image = image_url
     product.save()
 
     return Response('Image was uploaded')

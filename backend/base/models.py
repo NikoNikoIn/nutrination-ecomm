@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, default='/placeholder.png' )
+    image = models.ImageField(null=True, blank=True, default='https://firebasestorage.googleapis.com/v0/b/nutrinationcloud.appspot.com/o/images%2Fplaceholder.png?alt=media&token=d31420b6-5295-42e9-8f99-8c39a5860a72', max_length=255)
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)

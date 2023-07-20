@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'corsheaders',
+
+    'pyrebase',
 ]
 
 REST_FRAMEWORK = {
@@ -138,15 +140,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #    }
 #}
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'nutrination',
+#        'USER': 'postgres',
+#        'PASSWORD': 'Mk28022004',
+#        'HOST': 'localhost',
+#        'PORT': '5432',
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nutrination',
-        'USER': 'postgres',
-        'PASSWORD': 'Mk28022004',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'legacytild',
+    'PASSWORD': '2zLJWb4pPXkh',
+    'HOST': 'ep-fragrant-tree-838877.eu-central-1.aws.neon.tech',
+    'PORT': '5432',
+  }
 }
 
 
@@ -186,6 +199,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
+
+
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',

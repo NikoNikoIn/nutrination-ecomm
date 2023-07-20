@@ -19,7 +19,8 @@ function ProductCarousel() {
     }, [dispatch])
 
     return (
-        loading ? <Loader /> :
+        <>
+        {!loading && (
             error ? <Message variant='danger'>{error}</Message> :
                 (
                     <div>
@@ -34,7 +35,7 @@ function ProductCarousel() {
                                         <Link to={'/product/' + product._id}>
                                             <div style={{ width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                 <Image
-                                                    src={product.image}
+                                                    src={decodeURIComponent(product.image).replace('/images/', '')}
                                                     alt={product.name}
                                                     fluid
                                                     style={{
@@ -76,6 +77,8 @@ function ProductCarousel() {
                         </div>
                     </div>
                 )
+        )}
+        </>
     )
 }
 

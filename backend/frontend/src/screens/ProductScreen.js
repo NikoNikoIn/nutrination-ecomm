@@ -97,10 +97,10 @@ function ProductScreen() {
                         <Row>
                             <Col md={3}>
                                 <Image
-                                src={productCurrent.image}
+                                src={decodeURIComponent(productCurrent.image).replace('/images/', '')}
                                 alt={productCurrent.name}
                                 fluid
-                                style={{ transition: 'transform 0.5s', borderRadius: '8px' }}
+                                style={{ transition: 'transform 0.5s', borderRadius: '8px', filter: productCurrent.countInStock === 0 ? 'grayscale(100%)' : 'none' }}
                                 onMouseOver={e => e.target.style.transform = 'scale(1.05)'}
                                 onMouseOut={e => e.target.style.transform = 'scale(1)'}
                                 />                   
@@ -321,7 +321,7 @@ function ProductScreen() {
                                 <h3 className='mt-4'>Similar Products</h3>
                                 <Row>
                                     {products.map((product, index) => (
-                                        index < 4 && productCurrent._id !== product._id && productCurrent.category === product.category && (
+                                        index < 4 && productCurrent._id !== product._id && productCurrent.category === product.category && product.countInStock > 0 && (
                                             <Col key={product._id} md={6}>
                                                 <Product product={product}/>
                                             </Col>

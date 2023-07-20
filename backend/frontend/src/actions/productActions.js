@@ -50,7 +50,6 @@ export const listProducts = (keyword = '', page = 1) => async (dispatch) => {
             payload: data,
         })
 
-        // Fetch categories after successfully loading products
         dispatch(getCategories())
     } catch (error) {
         dispatch({
@@ -68,7 +67,6 @@ export const getCategories = () => async (dispatch) => {
         dispatch({ type: PRODUCT_CATEGORIES_REQUEST })
 
         const { data } = await axios.get('/api/products/categories/')
-        console.log(data)
 
         dispatch({
             type: PRODUCT_CATEGORIES_SUCCESS,

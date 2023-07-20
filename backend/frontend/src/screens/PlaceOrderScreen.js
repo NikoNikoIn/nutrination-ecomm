@@ -135,7 +135,7 @@ function PlaceOrderScreen() {
                                         <ListGroup.Item key={index}>
                                             <Row>
                                                 <Col md={2}>
-                                                    <Image src={item.image} alt={item.name} fluid rounded/>
+                                                    <Image src={decodeURIComponent(item.image).replace('/images/', '')} alt={item.name} fluid rounded/>
                                                 </Col>
                                                 <Col className='d-flex align-items-center'>
                                                     <Link to={`/product/${item.product}`}>{item.name}</Link>

@@ -4,11 +4,14 @@ import Rating from './Rating'
 import { Link } from 'react-router-dom'
 
 function Product({ product }) {
+
+    const decodedImageUrl = decodeURIComponent(product.image)
+
     return (
         <Container className='card-container'>
             <Card className='card-style rounded' style={{ width: '300px', height: '600px' }}>
                 <Link to={'/product/' + product._id}>
-                    <Card.Img src={product.image}/>
+                    <Card.Img src={decodeURIComponent(product.image).replace('/images/', '')} style={{ filter: product.countInStock === 0 ? 'grayscale(100%)' : 'none' }}/>
                 </Link>
                 <Card.Body>
                     <Link to={'/product/' + product._id}>

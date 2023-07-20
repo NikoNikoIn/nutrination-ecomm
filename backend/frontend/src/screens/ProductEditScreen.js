@@ -43,6 +43,7 @@ function ProductEditScreen() {
 
             if (!product.name || product._id !== Number(id)) {
                 dispatch(listProductDetails(id))
+
             } else {
                 setName(product.name)
                 setPrice(product.price)
@@ -76,25 +77,25 @@ function ProductEditScreen() {
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
-
         formData.append('image', file)
         formData.append('product_id', id)
-
         setUploading(true)
-
+    
         try {
             const config = {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'multipart/form-data',
+                },
             }
-
-            const { data } = await axios.post('/api/products/upload/', formData, config)
-
-
-            setImage(data)
+    
+            const response = await axios.post('/api/products/upload/', formData, config)
+    
+            const imageUrl = decodeURIComponent(response.data)
+            const updatedImageUrl = imageUrl.replace('http://localhost:3000/images/', '')
+            console.log(updatedImageUrl, 'ZZZZZ ')
+    
+            setImage(imageUrl)
             setUploading(false)
-
         } catch (error) {
             setUploading(false)
         }
@@ -139,7 +140,7 @@ function ProductEditScreen() {
 
                         <Form.Group controlId='image' style={{ marginBottom: '1.5rem' }}>
                             <Form.Label>Image</Form.Label>
-                            <Form.Control type='text' placeholder='Enter image' value={image} onChange={(e) => setImage(e.target.value)} style={{ fontSize: '1.5rem', padding: '1rem' }} />
+                            <Form.Control type='text' placeholder='Enter image' value={decodeURIComponent(image).replace('/images/', '')} onChange={(e) => setImage(e.target.value)} style={{ fontSize: '1.5rem', padding: '1rem' }} />
 
                             <Form.Control
                                 type='file'

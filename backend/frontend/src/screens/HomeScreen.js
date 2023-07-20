@@ -32,6 +32,7 @@ function HomeScreen() {
         <div className='body'>
             {!keyword && <ProductCarousel/>}
             {!keyword ? (<h1>Latest Products</h1>) : (<h1>Search Results on '{keyword}'</h1>)}
+            <Paginate page={page} pages={pages} keyword={keyword}/>
             {loading ? <Loader/>
                 : error ? <Message variant='danger'>{error}</Message>
                 :

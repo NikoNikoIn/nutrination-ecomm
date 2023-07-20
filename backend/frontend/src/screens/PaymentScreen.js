@@ -50,7 +50,7 @@ function PaymentScreen() {
                             name='paymentMethod' 
                             value='PayPal or Credit Card'
                             onChange={(e) => setPaymentMethod(e.target.value)}
-                            label={<><i class='fa-brands fa-paypal'></i> PayPal or Credit Card</>}
+                            label={<><i class='fa-brands fa-paypal fa-xl'></i> PayPal or Credit Card</>}
                         />
                         <Form.Check 
                             style={{ padding: '0.5rem' }} 
@@ -59,7 +59,7 @@ function PaymentScreen() {
                             name='paymentMethod' 
                             value='Cash on delivery'
                             onChange={(e) => setPaymentMethod(e.target.value)}
-                            label={<><i class='fa-solid fa-money-bill'></i> Cash on delivery</>}
+                            label={<><i class='fa-solid fa-money-bill fa-xl'></i> Cash on delivery</>}
                         />
                     </Col>
                 </Form.Group>
