@@ -145,7 +145,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #        'NAME': 'nutrination',
 #        'USER': 'postgres',
-#        'PASSWORD': 'Mk28022004',
+#        'PASSWORD': '',
 #        'HOST': 'localhost',
 #        'PORT': '5432',
 #    }
