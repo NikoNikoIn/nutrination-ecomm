@@ -181,14 +181,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles'
-]
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT = 'static/images'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles')
+]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = 'static/images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -205,6 +206,6 @@ CORS_ALLOW_HEADERS = ['access-control-allow-origin']
 import mimetypes
 mimetypes.add_type("text/javascript", ".js", True)
 
-
+import dj_database_url
 import django_on_heroku
 django_on_heroku.settings(locals())
