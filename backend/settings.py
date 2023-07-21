@@ -228,6 +228,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = ['access-control-allow-origin']
 
+import mimetypes
+mimetypes.add_type("text/javascript", ".js", True)
+
 
 import django_on_heroku
 django_on_heroku.settings(locals())
