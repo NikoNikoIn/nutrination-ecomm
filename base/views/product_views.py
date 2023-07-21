@@ -9,6 +9,11 @@ from base.serializer import ProductSerializer
 
 from rest_framework import status
 
+from django.shortcuts import render
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponse
+from django.views import View
+import os
+
 from django.db.models import Q, Case, When, Value, IntegerField
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -192,3 +197,15 @@ def deleteReview(request, pk):
     review = Review.objects.get(_id=pk)
     review.delete()
     return Response('Review Deleted')
+
+
+class Assets(View):
+
+    def get(self, _request, filename):
+        path = os.path.join(os.path.dirname(__file__), 'static', filename)
+
+        if os.path.isfile(path):
+            with open(path, 'rb') as file:
+                return HttpResponse(file.read(), content_type='application/javascript')
+        else:
+            return HttpResponseNotFound()

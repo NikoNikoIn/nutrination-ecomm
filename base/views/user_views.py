@@ -8,6 +8,11 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from base.serializer import UserSerializer, UserSerializerWithToken
 
+from django.shortcuts import render
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponse
+from django.views import View
+import os
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
@@ -112,3 +117,15 @@ def deleteUser(request, pk):
     userForDeletion = User.objects.get(id=pk)
     userForDeletion.delete()
     return Response('User was deleted')
+
+
+class Assets(View):
+
+    def get(self, _request, filename):
+        path = os.path.join(os.path.dirname(__file__), 'static', filename)
+
+        if os.path.isfile(path):
+            with open(path, 'rb') as file:
+                return HttpResponse(file.read(), content_type='application/javascript')
+        else:
+            return HttpResponseNotFound()
