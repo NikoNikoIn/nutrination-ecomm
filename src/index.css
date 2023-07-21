@@ -1,0 +1,96 @@
+main {
+  min-height: 80vh;
+}
+
+rating span {
+  margin: 0.1rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.color-nav {
+  min-height: 11vh;
+  background-color: rgb(235, 64, 52);
+}
+
+.color-foot {
+  background-color: rgb(7, 7, 7);
+}
+
+.title-navbar {
+  color: white;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-out;
+}
+
+.title-navbar:hover {
+  transform: scale(1.05);
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.title-footer {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.card-style {
+  margin: 10px;
+  padding: 25px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+
+.card-style:hover {
+  transform: scale(1.05);
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+}
+
+.arrow {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 75px;
+  height: 75px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.arrow.show {
+  opacity: 1;
+  bottom: 50px;
+  pointer-events: all;
+}
+
+.arrow:hover {
+  transform: translateY(-10px);
+  background-color: rgb(235, 64, 52);
+  pointer-events: all;
+}
+
+.up-arrow {
+  font-size: 30px;
+  color: #fff;
+}
+
