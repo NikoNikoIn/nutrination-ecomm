@@ -11,11 +11,6 @@ from base.serializer import ProductSerializer, OrderSerializer, PromoCodeSeriali
 from rest_framework import status
 from datetime import datetime
 
-from django.shortcuts import render
-from django.http import JsonResponse, HttpResponseNotFound, HttpResponse
-from django.views import View
-import os
-
 from django.utils import timezone
 from pytz import timezone as pytz_timezone
 
@@ -197,14 +192,3 @@ def getPromoCodeByName(request, promoCode):
     except PromoCode.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     
-
-class Assets(View):
-
-    def get(self, _request, filename):
-        path = os.path.join(os.path.dirname(__file__), 'static', filename)
-
-        if os.path.isfile(path):
-            with open(path, 'rb') as file:
-                return HttpResponse(file.read(), content_type='application/javascript')
-        else:
-            return HttpResponseNotFound()
