@@ -4,7 +4,6 @@ from .models import Product, Order, OrderItem, ShippingAddress, PromoCode, Revie
 from rest_framework_simplejwt.tokens import RefreshToken
 from urllib.parse import urlparse, unquote
 
-
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
     _id = serializers.SerializerMethodField(read_only=True)
