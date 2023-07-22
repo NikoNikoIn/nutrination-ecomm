@@ -201,7 +201,6 @@ USE_TZ = True
 STATIC_URL = '/build/static/'
 MEDIA_URL = '/images/'
 
-MEDIA_ROOT = 'https://'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
 
