@@ -201,7 +201,7 @@ USE_TZ = True
 STATIC_URL = '/build/static/'
 MEDIA_URL = '/imagess/'
 
-MEDIA_ROOT = 'https://firebasestorage.googleapis.com/v0/b/nutrinationcloud.appspot.com/o/images'
+MEDIA_ROOT = ''
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
 
