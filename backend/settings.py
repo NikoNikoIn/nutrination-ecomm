@@ -200,13 +200,10 @@ USE_TZ = True
 
 STATIC_URL = '/build/static/'
 MEDIA_URL = '/images/'
-print('sssssssssssss', STATIC_URL)
-
 
 MEDIA_ROOT = 'https://firebasestorage.googleapis.com/v0/b/nutrinationcloud.appspot.com/o/images'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
-print('sssssssssssss', STATIC_ROOT)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
