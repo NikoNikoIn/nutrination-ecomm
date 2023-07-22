@@ -1,0 +1,5 @@
+   /build/static/js/*.js
+   Content-Type: text/javascript
+
+   /build/static/css/*.css
+   Content-Type: text/css
