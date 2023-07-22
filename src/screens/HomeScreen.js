@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
@@ -6,13 +6,12 @@ import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import ProductCarousel from '../components/ProductCarousel'
 
 
 function HomeScreen() {
 
-    const navigate = useNavigate
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const {error, loading, products, pages} = productList

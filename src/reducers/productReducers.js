@@ -68,7 +68,6 @@ export const productCategoriesReducer = (state = { categories: [] }, action) => 
             return { loading: true, categories: [] }
 
         case PRODUCT_CATEGORIES_SUCCESS:
-            console.log('Success')
             return { loading: false, categories: action.payload }
 
         case PRODUCT_CATEGORIES_FAIL:

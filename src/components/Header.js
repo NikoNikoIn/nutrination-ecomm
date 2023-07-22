@@ -1,18 +1,19 @@
 import React, {useEffect} from 'react'
-import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap'
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
 import SearchBox from '../components/SearchBox'
-import Loader from '../components/Loader'
 import { getCategories, listProducts } from '../actions/productActions'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function Header() {
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
+
+    const [hovered, setHovered] = React.useState(false)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -22,7 +23,7 @@ function Header() {
     }
 
     const productList = useSelector(state => state.productList)
-    const {loading, success} = productList
+    const {loading} = productList
 
     const productCategories = useSelector(state => state.productCategories)
     const categories = productCategories.categories.categories
@@ -38,7 +39,13 @@ function Header() {
         
     }, [dispatch])
 
-
+    const handleMouseEnter = () => {
+        setHovered(true)
+    }
+    
+      const handleMouseLeave = () => {
+        setHovered(false)
+    }
 
     const handleClick = (category) => {
         const url = `/?keyword=${encodeURIComponent(category)}`
@@ -57,12 +64,17 @@ function Header() {
                 >
                     
                     <Container>
-                        <LinkContainer to='/'>
-                            <Navbar.Brand><h1 className='title-navbar'>NutriNation</h1></Navbar.Brand>
+                        <LinkContainer to='/' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                            <Navbar.Brand>
+                                <img src={'https://firebasestorage.googleapis.com/v0/b/nutrinationcloud.appspot.com/o/images%2Flogo-white.png?alt=media&token=a9ff4554-56de-4125-8dfb-c19ef364cf5b'} 
+                                    style={{ width: '100%', height: '50px', transition: 'transform 0.3s', transform: hovered ? 'scale(1.05)' : 'scale(1)' }} 
+                                    alt='NutriNation'
+                                />
+                            </Navbar.Brand>
                         </LinkContainer>
                         <Navbar.Toggle aria-controls='basic-navbar-nav' />
                         <Navbar.Collapse id='basic-navbar-nav'>
-                            <Nav className='mr-auto'>
+                            <Nav className='mr-auto' >
                                 <LinkContainer to='/about'>
                                     <Nav.Link>
                                         <i className='fas fa-dumbbell'></i> <font size='+1'>About Us</font>

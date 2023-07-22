@@ -25,19 +25,6 @@ h1 {
   background-color: rgb(7, 7, 7);
 }
 
-.title-navbar {
-  color: white;
-  font-family: "Lucida Console", "Courier New", monospace;
-  font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-out;
-}
-
-.title-navbar:hover {
-  transform: scale(1.05);
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
-}
-
 .title-footer {
   font-family: "Lucida Console", "Courier New", monospace;
 }

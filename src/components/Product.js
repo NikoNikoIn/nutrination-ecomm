@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 
 function Product({ product }) {
 
-    const decodedImageUrl = decodeURIComponent(product.image)
-
     return (
         <Container className='card-container'>
             <Card className='card-style rounded' style={{ width: '300px', height: '600px' }}>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Button, Row, Col, ListGroup, Image, Card, Form } from 'react-bootstrap'
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Message from '../components/Message'
@@ -66,7 +66,7 @@ function OrderScreen({match}) {
                 setSdkReady(true)
             }
         }
-    }, [order, orderId, dispatch, successPay, successDeliver])
+    }, [order, orderId, dispatch, successPay, successDeliver, navigate, userInfo])
 
     const successPaymentHandler = (paymentResult) => {
         const { access } = userInfo

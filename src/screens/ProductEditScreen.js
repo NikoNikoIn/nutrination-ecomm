@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
@@ -91,8 +90,6 @@ function ProductEditScreen() {
             const response = await axios.post('/api/products/upload/', formData, config)
     
             const imageUrl = decodeURIComponent(response.data)
-            const updatedImageUrl = imageUrl.replace('http://localhost:3000/images/', '')
-            console.log(updatedImageUrl, 'ZZZZZ ')
     
             setImage(imageUrl)
             setUploading(false)
@@ -186,6 +183,8 @@ function ProductEditScreen() {
                         </Form.Group>
 
                         <Button type='submit' variant='primary' style={{ fontSize: '1.5rem', padding: '1rem 2rem', borderRadius: '4px', display: 'block', width: '100%', marginTop: '2rem', marginBottom: '2rem' }}>Update</Button>
+                        <Button variant='info' style={{ fontSize: '1.5rem', padding: '1rem 2rem', borderRadius: '4px', display: 'block', width: '100%', marginTop: '2rem', marginBottom: '2rem' }} onClick={() => navigate(`/product/${product._id}`)}>Go to Product</Button>
+
                     </Form>
                 )}
             </FormContainer>

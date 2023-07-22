@@ -19,6 +19,7 @@ import ProductListScreen from './screens/ProductListScreen.js'
 import PromoCodeEditScreen from './screens/PromoCodeEditScreen.js'
 import ProductEditScreen from './screens/ProductEditScreen.js'
 import OrderListScreen from './screens/OrderListScreen.js'
+import StartAtTheTop from './components/StartAtTheTop.js'
 
 import { Container } from 'react-bootstrap'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
@@ -33,6 +34,7 @@ function App() {
         <Router>
             <ScrollToTop />
             <Header />
+            <StartAtTheTop />
             <Routes>
                 <Route path='/' exact element={
                     <>

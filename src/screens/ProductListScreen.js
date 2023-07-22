@@ -84,24 +84,31 @@ function ProductListScreen() {
                         <Table striped bordered hover responsive style={{ tableLayout: 'fixed', width: '100%' }}>
                             <thead>
                                 <tr>
-                                    <th style={{ width: '16%' }}>ID</th>
-                                    <th style={{ width: '16%' }}>NAME</th>
-                                    <th style={{ width: '16%' }}>PRICE</th>
-                                    <th style={{ width: '16%' }}>CATEGORY</th>
-                                    <th style={{ width: '16%' }}>BRAND</th>
-                                    <th style={{ width: '10%' }}></th>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>PRICE</th>
+                                    <th>CATEGORY</th>
+                                    <th>BRAND</th>
+                                    <th>IN STOCK?</th>
+                                    <th></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 {products.map(product => (
                                     <tr key={product._id}>
-                                        <td style={{ width: '16%' }}>{product._id}</td>
-                                        <td style={{ width: '16%' }}>{product.name}</td>
-                                        <td style={{ width: '16%' }}>${product.price}</td>
-                                        <td style={{ width: '16%' }}>{product.category}</td>
-                                        <td style={{ width: '16%' }}>{product.brand}</td>
-                                        <td style={{ width: '10%' }}>
+                                        <td>{product._id}</td>
+                                        <td>{product.name}</td>
+                                        <td>${product.price}</td>
+                                        <td>{product.category}</td>
+                                        <td>{product.brand}</td>
+                                        {product.countInStock > 0 ? (
+                                            <td>{product.countInStock}</td>
+
+                                        ) : (
+                                            <td><i className='fas fa-times' style={{color:'red'}}></i></td>
+                                        )}
+                                        <td>
                                             <LinkContainer to={`/admin/product/${product._id}/edit`}>
                                                 <Button variant='light' className='btn-sm'>
                                                     <i class='fa-solid fa-pen-to-square'></i>
