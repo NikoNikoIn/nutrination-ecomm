@@ -1,71 +1,25 @@
-# Getting Started with Create React App
+# About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an e-commerce project made on Python\Django\REST for back-end and React\Axios\Redux\Bootstrap for front-end
 
-## Available Scripts
+## Used in the project:
 
-In the project directory, you can run:
+Python, Django, REST, React, Axios, Redux, Bootstrap, JavaScript, PostgreSQL
 
-### `npm start`
+## Functionality:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
+My website is an online store selling sports nutrition supplements called NutriNation. I use ReactJS, Bootstrap, Axios and Redux for the frontend, Django and Django REST Framework for the backend, and PostgreSQL for the database, which is hosted on neon.tech. I also use Firebase to store images, JavaScript scripts and CSS styles. My website is hosted on vercel.com for fast and reliable content delivery. 
+ 
+I have registration and login functionality and a product list that supports filtering by availability, creation date. Top products component shows top products with high rating and availability. There is a search system by product name, categories and brands. 
+ 
+The product page displays basic information as well as the ability to add the product to the cart with the quantity. Users can leave and view reviews (one review per product per account) and view similar products (filtering by category). I also added the ability to add discounts to products through the admin panel. 
+ 
+Shopping cart system using localstorage, and I also provide the ability to specify shipping address (also stored in localstorage) and select payment method (PayPal or cash). At checkout, the user sees basic information and prices, including total cost, shipping, taxes and discounts through promo codes. 
+ 
+After creating an order, the user is redirected to a unique order page where they can make payment via a PayPal Sandbox account. In the navigation bar, there is a "Profile" tab where the user can view their information (change password/email/name, delete account, view their orders) or log out of the account. In the navigation bar there is also a "Categories" tab, which contains all the categories of products (dynamically added: if you add a product with a new category, it is automatically added to this tab). There is also an "About us" tab with information about the company. 
+ 
+In the footer of the page, there are links to the shopping cart, profile, and my GitHub.  
+ 
+Admins have access to an additional "Admin" tab where they can manage users, products, orders, and promo codes. They can also change the details of products, users, and promo codes, as well as delete reviews and mark orders as shipped or paid. 
+ 
+My Site is also optimized for mobile devices, ensuring it is usable on any device.
